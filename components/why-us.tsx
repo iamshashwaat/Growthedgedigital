@@ -114,9 +114,9 @@ export function WhyUs() {
             <p className="why-us-subtitle mt-4 text-base md:text-lg lg:text-xl text-white/90 italic">
               {"Why "}
               <span className="font-semibold text-white not-italic">
-                @growthedge__digital
+                @growthedgedigital.in
               </span>
-              {" ?"}
+              {"?"}
             </p>
 
             {/* Three white pill cards */}
