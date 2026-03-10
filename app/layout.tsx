@@ -4,7 +4,7 @@ import './globals.css'
 import { PageTransition } from '@/components/page-transition'
 import { Navbar } from '@/components/navbar'
 import { WhatsappWidget } from '@/components/whatsapp-widget'
-import SplashCursor from '@/components/SplashCursor'
+import PencilCursor from '@/components/pencil-cursor'
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -33,8 +33,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${permanentMarker.variable} font-sans antialiased`}>
-        <SplashCursor />
+      <body className={`${dmSans.variable} ${permanentMarker.variable} font-sans antialiased`} style={{ cursor: 'none' }}>
+        <PencilCursor />
         <Navbar />
         <PageTransition>
           {children}
