@@ -1,6 +1,11 @@
-import { Navbar } from "@/components/navbar";
+"use client";
+
+
 import { Footer } from "@/components/footer";
 import { LightbulbIcon } from "@/components/lightbulb-icon";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Social Media pricing plans
 const socialMediaPlans = [
@@ -74,33 +79,139 @@ const webDesigningPlan = {
 };
 
 export default function PricingPage() {
+  const heroRef = useRef<HTMLElement>(null);
+  const socialRef = useRef<HTMLElement>(null);
+  const webRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // Hero Animation
+      const tl = gsap.timeline();
+      tl.fromTo(".pricing-hero-bulb",
+        { y: -50, opacity: 0, rotation: 15 },
+        { y: 0, opacity: 1, rotation: 0, duration: 1, ease: "back.out(1.5)" }
+      ).fromTo(".pricing-hero-title",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.5"
+      ).fromTo(".pricing-hero-subtitle",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+        "-=0.4"
+      );
+
+      // Social Media Section Animation
+      gsap.fromTo(".social-badge",
+        { scale: 0.8, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.6,
+          ease: "back.out(1.5)",
+          scrollTrigger: {
+            trigger: socialRef.current,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
+
+      gsap.fromTo(".social-card",
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: socialRef.current,
+            start: "top 70%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
+
+      // Web Designing Section Animation
+      gsap.fromTo(".web-badge",
+        { scale: 0.8, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.6,
+          ease: "back.out(1.5)",
+          scrollTrigger: {
+            trigger: webRef.current,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
+
+      gsap.fromTo(".web-card",
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: webRef.current,
+            start: "top 70%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
+
+      gsap.fromTo(".web-bulb",
+        { x: 50, opacity: 0, rotation: -15 },
+        {
+          x: 0,
+          opacity: 1,
+          rotation: 0,
+          duration: 1,
+          ease: "back.out(1.5)",
+          scrollTrigger: {
+            trigger: webRef.current,
+            start: "top 60%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <main className="min-h-screen bg-background">
-      <Navbar />
+
 
       {/* Hero Section */}
-      <section className="relative bg-[#111111] pt-16 pb-8 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
+      <section ref={heroRef} className="relative bg-[#111111] pt-28 pb-8 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
         {/* Lightbulb positioned top-right */}
-        <div className="absolute top-4 right-4 sm:top-8 sm:right-8 md:top-10 md:right-10 lg:top-8 lg:right-16">
+        <div className="pricing-hero-bulb absolute top-4 right-4 sm:top-8 sm:right-8 md:top-10 md:right-10 lg:top-8 lg:right-16">
           <LightbulbIcon className="w-20 h-24 sm:w-28 sm:h-32 md:w-36 md:h-40 lg:w-44 lg:h-48" />
         </div>
 
         <div className="relative max-w-6xl mx-auto text-center">
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white italic mb-3">
+          <h1 className="pricing-hero-title text-4xl sm:text-5xl md:text-6xl font-bold text-white italic mb-3">
             Pricing plans
           </h1>
-          <p className="text-white/70 text-base sm:text-lg mb-10">
+          <p className="pricing-hero-subtitle text-white/70 text-base sm:text-lg mb-10">
             Choose the right plan for your needs
           </p>
         </div>
       </section>
 
       {/* Social Media Section */}
-      <section className="relative bg-[#111111] pb-16 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
+      <section ref={socialRef} className="relative bg-[#111111] pb-16 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
         <div className="relative max-w-6xl mx-auto">
           {/* Section Badge */}
-          <div className="flex justify-center mb-10">
+          <div className="social-badge flex justify-center mb-10">
             <div className="bg-[#F5A623] rounded-xl sm:rounded-2xl px-8 sm:px-12 md:px-16 py-3 sm:py-4">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#111111] uppercase tracking-wide">
                 SOCIAL MEDIA
@@ -113,7 +224,7 @@ export default function PricingPage() {
             {socialMediaPlans.map((plan, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-[#111111] rounded-2xl p-5 sm:p-6 flex flex-col"
+                className="social-card bg-white border-2 border-[#111111] rounded-2xl p-5 sm:p-6 flex flex-col"
               >
                 {/* Card Header */}
                 <div className="border-b-2 border-[#111111] pb-4 mb-4">
@@ -143,15 +254,15 @@ export default function PricingPage() {
       </section>
 
       {/* Web Designing Section */}
-      <section className="relative bg-[#111111] pb-20 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
+      <section ref={webRef} className="relative bg-[#111111] pb-20 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
         {/* Lightbulb positioned top-right */}
-        <div className="absolute top-0 right-4 sm:right-8 md:right-10 lg:right-16">
+        <div className="web-bulb absolute top-0 right-4 sm:right-8 md:right-10 lg:right-16">
           <LightbulbIcon className="w-20 h-24 sm:w-28 sm:h-32 md:w-36 md:h-40 lg:w-44 lg:h-48" />
         </div>
 
         <div className="relative max-w-6xl mx-auto">
           {/* Section Badge */}
-          <div className="flex justify-center mb-10">
+          <div className="web-badge flex justify-center mb-10">
             <div className="bg-[#F5A623] rounded-xl sm:rounded-2xl px-8 sm:px-12 md:px-16 py-3 sm:py-4">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#111111] uppercase tracking-wide">
                 WEB DESIGNING
@@ -161,7 +272,7 @@ export default function PricingPage() {
 
           {/* Single Centered Pricing Card */}
           <div className="flex justify-center">
-            <div className="bg-white border-2 border-[#111111] rounded-2xl p-5 sm:p-6 md:p-8 w-full max-w-md">
+            <div className="web-card bg-white border-2 border-[#111111] rounded-2xl p-5 sm:p-6 md:p-8 w-full max-w-md">
               {/* Card Header */}
               <div className="border-b-2 border-[#111111] pb-4 mb-4">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111] leading-tight mb-2">

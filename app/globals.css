@@ -120,23 +120,32 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
 .hero-text {
-  font-size: clamp(2rem, 9vw, 10rem);
+  font-size: clamp(2.25rem, 9.5vw, 10rem);
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .hero-text {
-    font-size: clamp(1.75rem, 11vw, 3rem);
+    font-size: clamp(1.85rem, 11vw, 3.5rem);
     letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-text {
+    font-size: clamp(1.5rem, 12vw, 2.25rem);
+    line-height: 1;
   }
 }
 
@@ -145,6 +154,53 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Aesthetic Utilities */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+  color: transparent;
+}
+
+.dark .text-stroke {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  33% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+
+  66% {
+    transform: translateY(5px) rotate(-2deg);
+  }
+}
+
+@keyframes bounce-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
 }

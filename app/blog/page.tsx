@@ -1,61 +1,65 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { Navbar } from "@/components/navbar";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { Footer } from "@/components/footer";
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Growth Strategies",
-    subtitle: "For startups & brands",
-    description:
-      "Marketing Playbooks That Scale. Practical strategies to increase traffic, generate quality leads, and boost revenue",
-    image: "/images/blog/growth-strategies.jpg",
-    bgColor: "bg-[#F5A623]",
-    textColor: "text-[#111111]",
-    slug: "growth-strategies",
-  },
-  {
-    id: 2,
-    title: "SEO Mastery",
-    subtitle: "Organic Growth Guide",
-    description:
-      "Rank Higher on Google. Learn how to optimize your website, improve search visibility, and attract high-intent customers",
-    image: "/images/blog/seo-mastery.jpg",
-    bgColor: "bg-[#3D3D3D]",
-    textColor: "text-white",
-    slug: "seo-mastery",
-  },
-  {
-    id: 3,
-    title: "Paid Ads Blueprint",
-    subtitle: "Performance Marketing",
-    description:
-      "Turn Clicks into Customers. Discover how to create high-converting ad campaigns on Google and social media that maximize ROI.",
-    image: "/images/blog/paid-ads.jpg",
-    bgColor: "bg-[#E8E8E8]",
-    textColor: "text-[#111111]",
-    slug: "paid-ads-blueprint",
-  },
-  {
-    id: 4,
-    title: "Brand & Content",
-    subtitle: "Authority Building",
-    description:
-      "Build a Powerful Online Brand. Explore content strategies and branding techniques that position your business as a trusted industry leader.",
-    image: "/images/blog/brand-content.jpg",
-    bgColor: "bg-[#F5A623]",
-    textColor: "text-[#111111]",
-    slug: "brand-content",
-  },
-];
-
 export default function BlogPage() {
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetch("/api/blog")
+      .then(res => res.json())
+      .then(data => setBlogPosts(data))
+      .catch(err => console.error("Failed to fetch blogs:", err));
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // Animate header text on load
+      const tl = gsap.timeline();
+      tl.fromTo(".blog-header-badge",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.2 }
+      ).fromTo(".blog-header-title",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.4"
+      ).fromTo(".blog-nav-btn",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1, ease: "back.out(1.5)" },
+        "-=0.4"
+      );
+
+      // Animate blog cards staggering in
+      gsap.fromTo(".blog-card",
+        { x: 50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: scrollContainerRef.current,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, [blogPosts]); // Re-run animations when posts load
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -69,17 +73,15 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <Navbar />
-
       <section className="relative w-full bg-background py-12 md:py-16 lg:py-20 overflow-hidden">
         <div className="px-4 sm:px-6 md:px-10 lg:px-16">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12">
+          <div ref={headerRef} className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12">
             <div>
-              <span className="text-[#F5A623] font-bold uppercase tracking-[0.2em] text-sm md:text-base">
+              <span className="blog-header-badge block text-[#F5A623] font-bold uppercase tracking-[0.2em] text-sm md:text-base">
                 OUR BLOG
               </span>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mt-2">
+              <h1 className="blog-header-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mt-2">
                 Fresh Ideas
                 <br />
                 for digital minds.
@@ -90,14 +92,14 @@ export default function BlogPage() {
             <div className="flex gap-2 mt-6 md:mt-0">
               <button
                 onClick={() => scroll("left")}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#111111] text-white flex items-center justify-center hover:bg-[#333333] transition-colors"
+                className="blog-nav-btn w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#111111] text-white flex items-center justify-center hover:bg-[#333333] transition-colors"
                 aria-label="Scroll left"
               >
                 <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
               </button>
               <button
                 onClick={() => scroll("right")}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#111111] text-white flex items-center justify-center hover:bg-[#333333] transition-colors"
+                className="blog-nav-btn w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#111111] text-white flex items-center justify-center hover:bg-[#333333] transition-colors"
                 aria-label="Scroll right"
               >
                 <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
@@ -117,14 +119,14 @@ export default function BlogPage() {
             {blogPosts.map((post) => (
               <article
                 key={post.id}
-                className={`${post.bgColor} rounded-2xl md:rounded-3xl flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] overflow-hidden snap-start flex flex-col`}
+                className={`blog-card ${post.bgColor} rounded-2xl md:rounded-3xl flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] overflow-hidden snap-start flex flex-col`}
               >
                 {/* Card Content */}
                 <div className="p-5 md:p-6 flex-1">
                   <h2
                     className={`text-2xl sm:text-3xl md:text-[2rem] font-bold ${post.textColor} leading-tight`}
                   >
-                    {post.title.split(" ").map((word, i) => (
+                    {post.title.split(" ").map((word: string, i: number) => (
                       <span key={i}>
                         {word}
                         {i < post.title.split(" ").length - 1 && <br />}

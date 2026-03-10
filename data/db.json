@@ -1,0 +1,70 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Growth Strategies",
+      "subtitle": "For startups & brands",
+      "description": "Marketing Playbooks That Scale. Practical strategies to increase traffic, generate quality leads, and boost revenue",
+      "image": "/images/blog/growth-strategies.jpg",
+      "bgColor": "bg-[#F5A623]",
+      "textColor": "text-[#111111]",
+      "slug": "growth-strategies",
+      "content": "# Growth Strategies for Startups\n\nScale your business effectively with our proven playbooks..."
+    },
+    {
+      "id": 2,
+      "title": "SEO Mastery",
+      "subtitle": "Organic Growth Guide",
+      "description": "Rank Higher on Google. Learn how to optimize your website, improve search visibility, and attract high-intent customers",
+      "image": "/images/blog/seo-mastery.jpg",
+      "bgColor": "bg-[#3D3D3D]",
+      "textColor": "text-white",
+      "slug": "seo-mastery",
+      "content": "# SEO Mastery\n\nEverything you need to know about search engine optimization..."
+    },
+    {
+      "id": 3,
+      "title": "test",
+      "subtitle": "Performance Marketing",
+      "description": "Turn Clicks into Customers. Discover how to create high-converting ad campaigns on Google and social media that maximize ROI.",
+      "image": "/images/blog/paid-ads.jpg",
+      "bgColor": "bg-[#E8E8E8]",
+      "textColor": "text-[#111111]",
+      "slug": "paid-ads-blueprint",
+      "content": "# Paid Ads Blueprint\n\nMaximize your ROI with performance marketing..."
+    },
+    {
+      "id": 4,
+      "title": "Brand & Content",
+      "subtitle": "Authority Building",
+      "description": "Build a Powerful Online Brand. Explore content strategies and branding techniques that position your business as a trusted industry leader.",
+      "image": "/images/blog/brand-content.jpg",
+      "bgColor": "bg-[#F5A623]",
+      "textColor": "text-[#111111]",
+      "slug": "brand-content",
+      "content": "# Brand & Content\n\nBuilding authority through strategic content..."
+    },
+    {
+      "id": 5,
+      "title": "Web Development",
+      "subtitle": "Modern Stack & Performance",
+      "description": "Future-Proof Your Digital Presence. Building high-performance, conversion-optimized websites using Next.js and React technology.",
+      "image": "/images/blog/web-dev.png",
+      "bgColor": "bg-[#1A1A1A]",
+      "textColor": "text-white",
+      "slug": "web-development",
+      "content": "# Modern Web Development\n\nUsing Next.js for high-performance marketing sites..."
+    },
+    {
+      "id": 6,
+      "title": "Automation Systems",
+      "subtitle": "Workflow & CRM",
+      "description": "Scale Without Effort. Implementing intelligent automation and CRM systems that handle your repetitive tasks automatically.",
+      "image": "/images/blog/automation.png",
+      "bgColor": "bg-[#E8E8E8]",
+      "textColor": "text-[#111111]",
+      "slug": "automation-systems",
+      "content": "# Automation Systems\n\nOptimize your workflows with CRM and AI..."
+    }
+  ]
+}

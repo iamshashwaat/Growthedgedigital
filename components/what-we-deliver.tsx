@@ -1,29 +1,70 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function WhatWeDeliver() {
+  const containerRef = useRef<HTMLElement>(null);
+
   const cards = [
     {
       title: "Revenue Growth",
       description:
-        "We don\u2019t chase vanity metrics. Every campaign, every creative, every optimization is aimed at one thing \u2014 growing your revenue. Whether it\u2019s through paid ads, SEO, or social media, our strategies are built to bring in paying customers, not just followers.",
+        "We don’t chase vanity metrics. Every campaign, every creative, every optimization is aimed at one thing — growing your revenue. Whether it’s through paid ads, SEO, or social media, our strategies are built to bring in paying customers, not just followers.",
     },
     {
       title: "Scalable customer acquisition",
       description:
-        "We build systems that bring in customers consistently \u2014 not one-time spikes. From lead generation funnels to retargeting strategies, we create acquisition machines that scale with your business.",
+        "We build systems that bring in customers consistently — not one-time spikes. From lead generation funnels to retargeting strategies, we create acquisition machines that scale with your business.",
     },
     {
       title: "High conversion rates",
       description:
-        "Traffic means nothing without conversions. We optimize every touchpoint \u2014 landing pages, ad creatives, CTAs, email flows \u2014 to turn visitors into leads and leads into customers.",
+        "Traffic means nothing without conversions. We optimize every touchpoint — landing pages, ad creatives, CTAs, email flows — to turn visitors into leads and leads into customers.",
     },
     {
       title: "Clear Performance Insights",
       description:
-        "No guesswork. No jargon-filled reports. You get clear, actionable insights every month \u2014 what\u2019s working, what\u2019s not, and exactly what we\u2019re doing next. Full transparency, always.",
+        "No guesswork. No jargon-filled reports. You get clear, actionable insights every month — what’s working, what’s not, and exactly what we’re doing next. Full transparency, always.",
     },
   ];
 
+  useGSAP(() => {
+    // Select all the cards
+    const cardsElements = gsap.utils.toArray(".deliver-card");
+
+    // Animate the cards staggering in when the container scrolls into view
+    gsap.fromTo(cardsElements,
+      {
+        opacity: 0,
+        y: 80,             // Start slightly below
+        scale: 0.95,       // Start slightly smaller
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.15,     // 0.15s delay between each card animating
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",  // Trigger when top of container hits 80% down the viewport
+          toggleActions: "play reverse play reverse",
+        },
+      }
+    );
+
+  }, { scope: containerRef });
+
   return (
-    <section className="relative w-full overflow-hidden bg-[#FFF8E7] px-4 py-16 md:px-10 md:py-20 lg:px-16 lg:py-28">
+    <section ref={containerRef} className="relative w-full overflow-hidden bg-[#FFF8E7] px-4 py-16 md:px-10 md:py-20 lg:px-16 lg:py-28">
       {/* Subtle golden radial glow in center */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -40,7 +81,7 @@ export function WhatWeDeliver() {
 
         {/* Subtitle */}
         <p className="text-foreground/80 text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed mb-12 md:mb-16">
-          {"We don\u2019t just \u201Cdo marketing.\u201D We deliver measurable business outcomes."}
+          {"We don’t just “do marketing.” We deliver measurable business outcomes."}
         </p>
 
         {/* 2x2 Card Grid */}
@@ -57,7 +98,7 @@ export function WhatWeDeliver() {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className="bg-[#1A1A1A] rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-10 flex flex-col"
+                className="deliver-card bg-[#1A1A1A] rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-10 flex flex-col"
               >
                 <h3 className="text-white font-bold text-2xl md:text-3xl lg:text-4xl leading-tight mb-4 md:mb-6">
                   {card.title}
