@@ -93,7 +93,7 @@ export default function PrivacyPage() {
                         <h3 className="text-2xl font-bold mb-4 relative z-10 m-0">Your Privacy Rights</h3>
                         <p className="text-white/60 leading-relaxed relative z-10 m-0">
                             You have the right to access, update, or delete your data at any time. Simply reach out to our privacy
-                            team at <span className="text-[#F5A623] font-bold">Growthedgedigital.co@gmail.com</span> and we will process
+                            team at <span className="text-[#F5A623] font-bold">hello@growthedgedigital.in</span> and we will process
                             your request within 48 hours.
                         </p> section
                     </section>

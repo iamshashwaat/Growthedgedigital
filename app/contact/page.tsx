@@ -78,8 +78,8 @@ export default function ContactPage() {
         {
             icon: <Mail className="w-6 h-6" />,
             label: "Email Us",
-            value: "Growthedgedigital.co@gmail.com",
-            href: "mailto:Growthedgedigital.co@gmail.com",
+            value: "hello@growthedgedigital.in",
+            href: "mailto:hello@growthedgedigital.in",
             color: "bg-blue-500/10 text-blue-500"
         },
         {
