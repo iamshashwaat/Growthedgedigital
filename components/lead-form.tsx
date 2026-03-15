@@ -3,7 +3,8 @@
 import { useState } from "react";
 
 // 👇 Paste your Google Apps Script Web App URL here after deployment
-const APPS_SCRIPT_URL = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL || "";
+//const APPS_SCRIPT_URL = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL || "";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
 
 const NEEDS = [
     "Social Media Management",
