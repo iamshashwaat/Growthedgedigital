@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // 👇 Paste your Google Apps Script Web App URL here after deployment
 //const APPS_SCRIPT_URL = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL || "";
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxor3Ec9F4ZDb0KhVENFTlJxGKVXpWRdsjUwGdqPST81VaH6QtKNo2x4R2sqYzXTGy_/exec";
 
 const NEEDS = [
     "Social Media Management",
