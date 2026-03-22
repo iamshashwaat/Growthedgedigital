@@ -14,7 +14,7 @@ export function WhatsappWidget() {
         );
     }, []);
 
-    const phoneNumber = "919532073896";
+    const phoneNumber = "918178296841";
     const message = "Hey There I have an inquiry and i got your contact from your website";
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;

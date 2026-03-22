@@ -71,8 +71,8 @@ export default function ContactPage() {
         {
             icon: <Phone className="w-6 h-6" />,
             label: "Call Us",
-            value: "+91 95320 73896",
-            href: "tel:+919532073896",
+            value: "+91 81782 96841",
+            href: "tel:+918178296841",
             color: "bg-[#F5A623]/10 text-[#F5A623]"
         },
         {
@@ -86,7 +86,7 @@ export default function ContactPage() {
             icon: <MessageSquare className="w-6 h-6" />,
             label: "WhatsApp",
             value: "Chat with an Expert",
-            href: "https://wa.me/919532073896",
+            href: "https://wa.me/918178296841",
             color: "bg-green-500/10 text-green-500"
         },
         {

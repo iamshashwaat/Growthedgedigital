@@ -138,7 +138,7 @@ export function Footer() {
               <h4 className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.4em] text-[#F5A623] mb-6 sm:mb-8 lg:mb-10">Get In Touch</h4>
               <div className="flex flex-col gap-6 sm:gap-8">
                 <a
-                  href="tel:+919532073896"
+                  href="tel:+918178296841"
                   className="group flex items-center gap-4 sm:gap-5 text-foreground/80 hover:text-[#F5A623] transition-colors"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] flex items-center justify-center border border-black/5 group-hover:bg-[#F5A623] group-hover:text-white transition-all duration-300 group-hover:-translate-y-1">
@@ -146,7 +146,7 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-foreground/30">Quick Call</span>
-                    <span className="text-base sm:text-lg font-bold">+91 95320 73896</span>
+                    <span className="text-base sm:text-lg font-bold">+91 81782 96841</span>
                   </div>
                 </a>
                 <a
