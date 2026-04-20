@@ -158,7 +158,7 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-foreground/30">Send Email</span>
-                    <span className="text-base sm:text-lg font-bold break-all">hello@growthedgedigital.in</span>
+                    <span className="text-base sm:text-lg font-bold whitespace-nowrap">hello@growthedgedigital.in</span>
                   </div>
                 </a>
               </div>

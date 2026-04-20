@@ -137,7 +137,7 @@ export default function ContactPage() {
                                         <span className="text-xs font-bold uppercase tracking-widest text-foreground/40 block mb-1">
                                             {info.label}
                                         </span>
-                                        <span className="text-[1.1rem] font-bold text-foreground break-all">
+                                        <span className="text-[1.1rem] font-bold text-foreground whitespace-nowrap">
                                             {info.value}
                                         </span>
                                     </div>

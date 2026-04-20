@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Our Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
   { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -70,8 +71,8 @@ export function Navbar() {
         transition: "top 0.45s cubic-bezier(0.4,0,0.2,1), width 0.5s cubic-bezier(0.4,0,0.2,1), max-width 0.5s cubic-bezier(0.4,0,0.2,1)",
       }}
       className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled
-        ? "top-3 w-[92%] sm:w-[98%] max-w-[960px]"
-        : "top-4 sm:top-6 w-[92%] sm:w-[72%] max-w-[720px]"
+        ? "top-3 w-[92%] sm:w-[98%] max-w-[1100px]"
+        : "top-4 sm:top-6 w-[92%] sm:w-[85%] max-w-[900px]"
         }`}
     >
       <nav
@@ -122,7 +123,7 @@ export function Navbar() {
                 )}
                 <Link
                   href={link.href}
-                  className={`relative z-10 px-4 py-2 block text-[15px] font-medium whitespace-nowrap transition-colors duration-150 ${isActive ? "text-white" : "text-white/70 hover:text-white/90"
+                  className={`relative z-10 px-3 lg:px-4 py-2 block text-[14px] lg:text-[15px] font-medium whitespace-nowrap transition-colors duration-150 ${isActive ? "text-white" : "text-white/70 hover:text-white/90"
                     }`}
                 >
                   {link.label}
