@@ -67,9 +67,9 @@ export function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="relative bg-[#111111] pt-20">
+    <footer ref={footerRef} className="relative bg-transparent mt-20">
       {/* Decorative Stacking Layer for Depth - positioned to accent the transition */}
-      <div className="absolute top-[20px] left-[5%] right-[5%] h-24 bg-[#fde9c7] rounded-t-[3rem] md:rounded-t-[4rem] -z-10 opacity-30 blur-[4px]" />
+      <div className="absolute top-0 left-[5%] right-[5%] h-24 bg-[#fde9c7] rounded-t-[3rem] md:rounded-t-[4rem] -z-10 opacity-30 blur-[4px]" />
 
       {/* Main footer area */}
       <div className="relative bg-[#FFF8E7] pt-16 sm:pt-24 md:pt-28 pb-10 sm:pb-12 px-6 sm:px-8 md:px-10 lg:px-20 rounded-t-[3rem] sm:rounded-t-[4rem] md:rounded-t-[6rem] shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.08)] border-t border-white/60 overflow-hidden">
@@ -141,7 +141,7 @@ export function Footer() {
                   href="tel:+918178296841"
                   className="group flex items-center gap-4 sm:gap-5 text-foreground/80 hover:text-[#F5A623] transition-colors"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] flex items-center justify-center border border-black/5 group-hover:bg-[#F5A623] group-hover:text-white transition-all duration-300 group-hover:-translate-y-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-2xl bg-white shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] flex items-center justify-center border border-black/5 group-hover:bg-[#F5A623] group-hover:text-white transition-all duration-300 group-hover:-translate-y-1">
                     <Phone className="h-4.5 w-4.5 sm:h-5 sm:w-5 shrink-0" />
                   </div>
                   <div className="flex flex-col">
@@ -153,7 +153,7 @@ export function Footer() {
                   href="mailto:hello@growthedgedigital.in"
                   className="group flex items-center gap-4 sm:gap-5 text-foreground/80 hover:text-[#F5A623] transition-colors"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] flex items-center justify-center border border-black/5 group-hover:bg-[#F5A623] group-hover:text-white transition-all duration-300 group-hover:-translate-y-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-2xl bg-white shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] flex items-center justify-center border border-black/5 group-hover:bg-[#F5A623] group-hover:text-white transition-all duration-300 group-hover:-translate-y-1">
                     <Mail className="h-4.5 w-4.5 sm:h-5 sm:w-5 shrink-0" />
                   </div>
                   <div className="flex flex-col">
@@ -180,17 +180,15 @@ export function Footer() {
             </div>
           </div>
 
-        </div>
-      </div>
-
-      {/* Bottom Bar: Copyright and Mini Text */}
-      <div className="footer-bottom bg-foreground py-8 px-6 md:px-10 lg:px-20 border-t border-white/[0.05]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm font-medium text-background/40">© 2025 GrowthEdge Digital. All rights reserved.</p>
-          <div className="flex items-center gap-8">
-            <Link href="/privacy" className="text-sm font-medium text-background/40 hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-sm font-medium text-background/40 hover:text-white transition-colors">Terms of Service</Link>
+          {/* Bottom Bar: Copyright and Mini Text */}
+          <div className="footer-bottom pt-8 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 w-full">
+            <p className="text-sm font-medium text-foreground/50">© 2025 GrowthEdge Digital. All rights reserved.</p>
+            <div className="flex items-center gap-8">
+              <Link href="/privacy" className="text-sm font-medium text-foreground/50 hover:text-[#F5A623] transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm font-medium text-foreground/50 hover:text-[#F5A623] transition-colors">Terms of Service</Link>
+            </div>
           </div>
+
         </div>
       </div>
     </footer>

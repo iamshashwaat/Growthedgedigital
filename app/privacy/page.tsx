@@ -23,8 +23,8 @@ export default function PrivacyPage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-background pt-32 pb-20">
-            <div ref={containerRef} className="max-w-4xl mx-auto px-6">
+        <main className="min-h-screen bg-background pt-32">
+            <div ref={containerRef} className="max-w-4xl mx-auto px-6 pb-20">
 
                 {/* Header */}
                 <div className="legal-header mb-20 text-center">

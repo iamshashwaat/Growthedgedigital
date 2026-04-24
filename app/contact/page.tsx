@@ -99,8 +99,8 @@ export default function ContactPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-background pt-32 pb-20">
-            <div ref={containerRef} className="max-w-7xl mx-auto px-6 md:px-12">
+        <main className="min-h-screen bg-background pt-32">
+            <div ref={containerRef} className="max-w-7xl mx-auto px-6 md:px-12 pb-20">
 
                 {/* Header */}
                 <div ref={headerRef} className="max-w-3xl mb-16 md:mb-24">
