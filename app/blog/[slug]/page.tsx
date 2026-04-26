@@ -59,7 +59,7 @@ export default function BlogPostPage() {
     const htmlContent = marked.parse(post.content || "");
 
     return (
-        <main className="min-h-screen bg-background text-foreground">
+        <main className="min-h-screen text-foreground">
             {/* Hero Section */}
             <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
                 <Image
@@ -69,7 +69,7 @@ export default function BlogPostPage() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className={`absolute inset-0 bg-gradient-to-t ${post.bgColor || 'bg-[#111]'} via-${post.bgColor ? post.bgColor+'/40' : 'black/40'} to-transparent`} />
 
                 {/* Back Button */}
                 <Link
@@ -81,53 +81,61 @@ export default function BlogPostPage() {
                 </Link>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24">
+            <div className={`${post.bgColor || 'bg-[#111]'} min-h-screen`}>
+            <div className={`max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24`}>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
                     {/* Main Article Content */}
-                    <article className="lg:col-span-8">
+                    <article className={`lg:col-span-8 ${post.bgColor || 'bg-[#111]'} rounded-3xl p-6 md:p-10 lg:p-12 shadow-2xl`}>
                         <header className="post-header mb-12">
-                            <span className="inline-block px-4 py-1.5 rounded-full bg-[#F5A623]/10 text-[#F5A623] text-sm font-bold uppercase tracking-widest mb-6">
+                            <span className={`inline-block px-4 py-1.5 rounded-full bg-black/10 ${post.textColor || 'text-white'} text-sm font-bold uppercase tracking-widest mb-6`}>
                                 {post.subtitle}
                             </span>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-8">
+                            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-8 ${post.textColor || 'text-white'}`}>
                                 {post.title}
                             </h1>
 
-                            <div className="flex flex-wrap gap-6 text-foreground/60 text-sm font-medium border-y border-foreground/10 py-6">
+                            <div className={`flex flex-wrap gap-6 text-sm font-medium border-y border-black/10 py-6 ${post.textColor ? post.textColor.replace('text-', 'text-') + '/60' : 'text-white/60'}`}>
                                 <div className="flex items-center gap-2">
-                                    <User className="w-4 h-4 text-[#F5A623]" />
+                                    <User className={`w-4 h-4 ${post.bgColor ? 'text-black/60' : 'text-[#F5A623]'}`} />
                                     {post.author || "Marketing Strategist"}
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Calendar className="w-4 h-4 text-[#F5A623]" />
+                                    <Calendar className={`w-4 h-4 ${post.bgColor ? 'text-black/60' : 'text-[#F5A623]'}`} />
                                     {post.createdAt ? new Date(post.createdAt).toLocaleDateString() : "March 5, 2026"}
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Clock className="w-4 h-4 text-[#F5A623]" />
+                                    <Clock className={`w-4 h-4 ${post.bgColor ? 'text-black/60' : 'text-[#F5A623]'}`} />
                                     {post.readTime || "6 min read"}
                                 </div>
                             </div>
                         </header>
 
                         <div
-                            className="post-content prose prose-lg md:prose-xl dark:prose-invert max-w-none text-foreground/80 leading-relaxed
-              prose-headings:text-foreground prose-headings:font-bold prose-h3:text-2xl prose-h3:mt-10
-              prose-blockquote:border-[#F5A623] prose-blockquote:bg-[#F5A623]/5 prose-blockquote:py-2 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic
-              "
+                            className={`post-content prose prose-lg md:prose-xl max-w-none leading-relaxed
+              prose-headings:font-bold prose-h3:text-2xl prose-h3:mt-10
+              prose-p:opacity-90 prose-li:opacity-90
+              prose-blockquote:border-black/30 prose-blockquote:bg-black/5 prose-blockquote:py-2 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:not-italic
+              ${post.textColor ? post.textColor.replace('text-', ' prose-headings:text-').replace('text-', ' prose-p:text-').replace('text-', ' prose-li:text-') : 'prose-invert'}
+              `}
+                            style={post.textColor ? {
+                                ['--tw-prose-body' as string]: post.textColor,
+                                ['--tw-prose-headings' as string]: post.textColor,
+                                ['--tw-prose-links' as string]: post.textColor,
+                            } : undefined}
                             dangerouslySetInnerHTML={{ __html: htmlContent }}
                         />
 
-                        <div className="mt-16 pt-10 border-t border-foreground/10 flex items-center justify-between">
+                        <div className="mt-16 pt-10 border-t border-black/10 flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#F5A623] transition-colors">
+                                <button className={`flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-80 transition-opacity ${post.textColor || 'text-white'}`}>
                                     <Share2 className="w-5 h-5" />
                                     Share Article
                                 </button>
                             </div>
                             <div className="flex gap-4">
                                 {["Twitter", "LinkedIn", "Facebook"].map((platform) => (
-                                    <button key={platform} className="text-xs font-bold uppercase tracking-widest text-foreground/40 hover:text-[#F5A623] transition-colors">
+                                    <button key={platform} className={`text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-opacity ${post.textColor || 'text-white'}`} style={{ opacity: 0.4 }}>
                                         {platform}
                                     </button>
                                 ))}
@@ -137,11 +145,11 @@ export default function BlogPostPage() {
 
                     {/* Sidebar / CTA */}
                     <aside className="lg:col-span-4 space-y-10">
-                        <div className="post-sidebar bg-[#FFF8E7] rounded-3xl p-8 sticky top-32 border border-black/5 shadow-xl shadow-black/5">
-                            <h3 className="text-2xl font-black mb-4 leading-tight">
+                        <div className="bg-[#FFF8E7] rounded-3xl p-8 sticky top-32 border border-black/5 shadow-xl">
+                            <h3 className="text-2xl font-black mb-4 leading-tight text-black">
                                 Want to grow your business like this?
                             </h3>
-                            <p className="text-foreground/70 mb-8 leading-relaxed">
+                            <p className="text-black/70 mb-8 leading-relaxed">
                                 We've helped dozens of brands achieve similar results through
                                 sophisticated marketing and automation systems.
                             </p>
@@ -154,6 +162,7 @@ export default function BlogPostPage() {
                         </div>
                     </aside>
                 </div>
+            </div>
             </div>
 
             <Footer />
