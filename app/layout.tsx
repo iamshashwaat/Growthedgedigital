@@ -5,6 +5,7 @@ import { PageTransition } from '@/components/page-transition'
 import { Navbar } from '@/components/navbar'
 import { WhatsappWidget } from '@/components/whatsapp-widget'
 import PencilCursor from '@/components/pencil-cursor'
+import { DataPreloader } from '@/components/data-preloader'
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${permanentMarker.variable} font-sans antialiased`} style={{ cursor: 'none' }}>
+        <DataPreloader />
         <PencilCursor />
         <Navbar />
         <PageTransition>
