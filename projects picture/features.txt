@@ -1,0 +1,82 @@
+1. Poojatech
+Web App (No Android version)
+A corporate product catalog and business showcase website for Poojatech Complete Solutions, a multi-sector manufacturing and services company operating in healthcare, pharmaceutical, chemical, food industry, and engineering domains.
+Key Features:
+- Product Catalog with categorized listings (Healthcare, Food Industry Furniture, Surgical Items), search bar, and category/subcategory filtering with URL deep-linking
+- Admin CMS Dashboard – password-protected panel for full CRUD operations on products (add/edit/delete with image upload), searchable product table, and JSON export
+- Image & Video Gallery – product image library and lazy-loading video carousel showcasing manufacturing processes
+- Landing Page – hero section with glassmorphism UI, rotating text animations, "About Us", "Core Expertise" (4-card grid: Industrial Manufacturing, Interior Design, Manpower Solutions, Security Solutions), "Vision & Mission", and "Why Choose Us" value propositions
+- Contact Page with inquiry form and company info (address, phone, email)
+- Tech Stack: React 19, Vite, Tailwind CSS, Framer Motion, Express 5, MongoDB/Mongoose, Vercel deployment
+---
+2. RainCRM
+Web App + Native Android App (APK available: Rain-Crm.apk)
+An all-in-one CRM and business communication platform (also branded as AI CRM) that centralizes WhatsApp messaging, email, voice calls, AI chatbots, marketing campaigns, and automation into a unified dashboard.
+Key Features:
+- WhatsApp Business Messaging – multi-device WhatsApp Web integration via Baileys; send/receive text, images, videos, audio, documents, stickers, locations, polls, reactions; group management; broadcast lists; real-time chat via Socket.io
+- AI-Powered Chat Assistant – multi-provider LLM support (OpenAI GPT, Google Gemini, Anthropic Claude, OpenRouter, DeepSeek); configurable auto-reply mode, chat summarization, sentiment analysis, lead scoring
+- Gmail Integration – OAuth 2.0 connection, full thread management, AI email analysis (sentiment, summarization, importance scoring), high-priority email alerts via WhatsApp
+- Marketing Campaigns – create WhatsApp/Email campaigns with templated content, scheduled sending, audience targeting by tags/import batches, real-time stats (sent/failed/delivered/read)
+- Custom Web Forms – drag-and-drop form builder with rich design customization, public submission endpoint, WhatsApp notification on new submissions
+- Voice Calls – Twilio integration for outbound calls, call history, statistics; AI voice agents via Bolna
+- Contact Management – CSV import with validation, tag-based organization, custom attributes, source tracking
+- Google Sheets Automation – AI extracts WhatsApp conversation data and writes to spreadsheets
+- SaaS Admin Panel – separate admin app for managing tenant users, credits, and platform-wide stats
+- Mobile App – Ionic React + Capacitor native Android app (package: com.raincrm.app)
+- Tech Stack: React 19, Vite, Express, MongoDB, Socket.io, Baileys, OpenAI SDK, Google APIs, Twilio, Cloudinary, Ionic/Capacitor
+---
+3. ForPg
+Web App + Two Native Android Apps (APKs available: PG-Management.apk & PgAdmin.apk)
+A Paying Guest (PG) property management system that enables PG owners to manage multiple buildings, track tenants, and automate WhatsApp-based communication including rent reminders.
+Key Features:
+- Multi-Building & Multi-Tenant Management – full CRUD for buildings and tenants with fields: name, phone, room number, floor, rent amount, join date, active/inactive status
+- Dynamic Custom Fields – owners can define extra fields (Deposit Amount, Emergency Contact, Aadhaar Number, etc.) of types TEXT, NUMBER, DATE, or SELECT that appear on tenant forms
+- WhatsApp Web Integration – connect WhatsApp via QR code, send text messages or images with captions (rent receipts, QR codes)
+- Bulk & Single Messaging – send to individual tenants or bulk-filtered by building/floor; real-time delivery status; message rate limiting to prevent WhatsApp bans
+- Scheduled Reminders – two trigger types: fixed date (send on day 1-31 of month) or relative to join date (X days before/after); time window configuration; idempotent (no duplicate sends)
+- Reusable Message Templates – create templates with {{variable}} placeholders (name, room, rent, etc.) with live preview against real tenants
+- CSV Import – bulk import tenants with template download, validation, error reporting, duplicate skipping
+- Message History – cursor-based paginated logs with status indicators and image attachment tracking
+- Admin Panel – separate app for super-admins to create/manage users, promote to admin
+- Mobile Apps – two Capacitor native Android apps: PG Manager (com.pgmanager.app) and PG Admin (com.pgmanager.admin)
+- Tech Stack: React 18 + TypeScript, Vite, Tailwind CSS, Zustand, Express + TypeScript, Prisma/PostgreSQL, Baileys (WhatsApp), node-cron, Capacitor 7
+---
+4. PioneerOS
+Web App (PWA – installable to mobile home screen, no native Android APK)
+An enterprise agency operating system – a comprehensive ERP/CRM/HRMS/PM suite for Branding Pioneers, a digital marketing agency. Covers the full employee and client lifecycle in a single platform.
+Key Features:
+- Role-Based Dashboards – 13+ role-specific views (Super Admin, Manager, HR, Sales, Accounts, Employee (by department: SEO/Social/Ads/Web), Intern, Freelancer) with widgets for celebrations, daily learning, work timer, performance leaderboard, quick actions
+- Human Resources (37+ modules) – employee directory, recruitment (candidates, assessments, interviews, offer letters), onboarding checklists, leave management, attendance tracking (including AI parsing from screenshots), performance reviews, self-appraisals, PIP plans, exit management with FnF settlement, asset tracking, training & certifications
+- Sales & CRM (25+ modules) – lead management with Kanban pipeline (New → Contacted → Qualified → Proposal → Negotiation → Won/Lost), proposals, RFP submissions, sales meetings, lead nurturing, sales-to-accounts handover
+- Accounts & Finance (53+ modules) – client profiles with lifecycle stages, invoicing (auto-invoice config), payment collections & follow-ups, contracts/SLA documents, expense tracking, budget alerts, AI-powered bank statement reconciliation, per-client ledger, revenue forecasting
+- Client Portal – client-facing portal with document sharing, announcements, goal tracking, support tickets, feedback, OAuth connections
+- Task & Project Management – full CRUD with assignees/reviewers/due dates/priorities/subtasks/time tracking/QA workflow, daily task planning (huddle-based), project tracking (Web/Design/SEO)
+- Team Communication – real-time chat channels, DMs, threads, reactions; WhatsApp multi-account integration (scheduled messaging, campaigns, templates, access management)
+- Marketing Analytics – social media post scheduling & page metrics, SEO keyword/rank/backlink tracking, ads campaign management, content calendar
+- Learning & Development – learning logs with AI verification, training courses, certifications, monthly AI-summarized learning audits
+- Gamification – Arcade XP points from tasks/recognition, rewards catalog with point-based redemptions, Revenue-Based Compensation (RBC) with multipliers
+- Reporting & Analytics – client reports, department KPIs, custom report builder, PDF/Excel exports
+- Other Modules – SOP/knowledge base, employee directory/org chart, meetings (calendar, action items, MoM), notifications (in-app + email + WhatsApp), global search, admin (impersonation, system settings)
+- Design System "Atrium" – CSS variable-driven theme with warm linen base, ember accent, Geist typography
+- Tech Stack: Next.js 16, React 19, TypeScript, Tailwind CSS, Prisma/PostgreSQL, Redis, NextAuth.js, Resend, Razorpay, Cloudinary, DeepSeek/OpenRouter AI, WBizTool WhatsApp, Playwright, Sentry
+---
+5. MyDesk (Task Studio)
+Web App (No Android version)
+A daily office productivity dashboard – a unified command center for individuals and teams to manage daily tasks, track deliverables, take meeting notes, plan content, brainstorm ideas, communicate, and monitor productivity.
+Key Features:
+- Workspace Dashboard – 6 draggable widgets (Welcome with mood selector & productivity score, Live Clock, Stats Grid, Schedule Snapshot, Priority Tasks, Recent Ideas) reorderable via dnd-kit
+- Daily Task Tracker – three views: Table, Kanban Board, and Timeline (hourly schedule); quick-add tasks with priority levels (emergency/high/medium/low/creative), status workflow (todo → in_progress → in_review → done → blocked), file attachments, link attachments, auto-archive at midnight
+- Content Calendar – monthly grid view + list view for scheduling content with stages (Draft → Review → Scheduled → Published), platform tracking, goals, captions
+- Brain Dump – ephemeral scratchpad with AI-powered analysis (Google Gemini) that categorizes text into Action Items, Key Insights, Questions, General Notes; auto-clears at midnight
+- Meeting Notes – rich note editor with title, date, attendees, discussion notes, action items, resource links
+- Internal Messaging – 1-on-1 DMs with read receipts (double checkmarks) and room-based group chat with auto-polling every 3 seconds and unread badges
+- AI Assistant – context-aware Gemini chat panel that adapts suggestions based on current section
+- Focus Mode – full-screen Pomodoro timer with browser notifications
+- Command Palette – press "/" to search and execute quick commands (/task, /idea, /meeting, /focus, etc.)
+- Reports – weekly productivity bar charts and team capacity bars with color coding
+- Tools Hub – categorized app shortcuts (Google Workspace, Communication, Design, Dev, AI Platforms) + custom user-added links with auto-fetched favicons
+- Team Management (Admin) – team roster with avatars, mood, capacity %, add/delete members
+- Google Calendar Integration – OAuth 2.0, fetch and display upcoming events
+- User Profiles – avatar upload, password management, role display
+- Tech Stack: React 19 + TypeScript, Vite 6, Tailwind CSS 4, TanStack React Query 5, Framer Motion 11, dnd-kit, Recharts 3, Express 4, Sequelize 6, PostgreSQL/SQLite, Google Gemini AI, JWT auth, Google OAuth
+---

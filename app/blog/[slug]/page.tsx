@@ -154,7 +154,7 @@ export default function BlogPostPage() {
                                 sophisticated marketing and automation systems.
                             </p>
                             <Link
-                                href="/#footer-form"
+                                href="/book-a-call"
                                 className="block w-full text-center bg-[#F5A623] text-black font-extrabold py-4 rounded-2xl hover:bg-[#e09520] transition-colors transition-transform active:scale-95"
                             >
                                 Get a Free Audit

@@ -95,7 +95,7 @@ export default function PrivacyPage() {
                             You have the right to access, update, or delete your data at any time. Simply reach out to our privacy
                             team at <span className="text-[#F5A623] font-bold">hello@growthedgedigital.in</span> and we will process
                             your request within 48 hours.
-                        </p> section
+                        </p>
                     </section>
 
                 </div>

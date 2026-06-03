@@ -182,7 +182,7 @@ export function Footer() {
 
           {/* Bottom Bar: Copyright and Mini Text */}
           <div className="footer-bottom pt-8 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 w-full">
-            <p className="text-sm font-medium text-foreground/50">© 2025 GrowthEdge Digital. All rights reserved.</p>
+            <p className="text-sm font-medium text-foreground/50">© {new Date().getFullYear()} GrowthEdge Digital. All rights reserved.</p>
             <div className="flex items-center gap-8">
               <Link href="/privacy" className="text-sm font-medium text-foreground/50 hover:text-[#F5A623] transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="text-sm font-medium text-foreground/50 hover:text-[#F5A623] transition-colors">Terms of Service</Link>

@@ -84,6 +84,14 @@ export async function deletePost(id: number) {
 
 // --- PROJECTS ---
 
+export async function getProjectById(id: number): Promise<Project | undefined> {
+    const collection = await getCollection('projects');
+    const project = await collection.findOne({ id });
+    if (!project) return undefined;
+    const { _id, ...rest } = project;
+    return rest as Project;
+}
+
 export async function getAllProjects(): Promise<Project[]> {
     const collection = await getCollection('projects');
     const projects = await collection.find({}).toArray();
