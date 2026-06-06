@@ -6,7 +6,13 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Share2, Clock, Calendar, User } from "lucide-react";
 import gsap from "gsap";
-import { marked } from "marked";
+import { marked, Renderer } from "marked";
+
+const headingRenderer = new Renderer();
+headingRenderer.heading = function ({ depth, text }) {
+  const newDepth = Math.min(depth + 1, 6);
+  return `<h${newDepth}>${text}</h${newDepth}>`;
+};
 import { Footer } from "@/components/footer";
 
 export default function BlogPostPage() {
@@ -56,7 +62,7 @@ export default function BlogPostPage() {
     if (!post) return null;
 
     // Convert markdown to HTML safely using 'marked'
-    const htmlContent = marked.parse(post.content || "");
+    const htmlContent = marked.parse(post.content || "", { renderer: headingRenderer });
 
     return (
         <main className="min-h-screen text-foreground">
