@@ -85,7 +85,7 @@ const servicesBottomRow = [
       "Stand out in competitive markets.",
     ],
     variant: "dark" as const,
-    image: "/images/services/web.png", // Fallback
+    image: "/images/services/branding.png",
   },
   {
     title: "Analytics",
@@ -96,7 +96,7 @@ const servicesBottomRow = [
       "Improve marketing efficiency.",
     ],
     variant: "amber" as const,
-    image: "/images/services/seo.png", // Fallback
+    image: "/images/services/analytics.png",
   },
 ];
 

@@ -4,7 +4,9 @@ import { getAllPosts, addPost, updatePost, deletePost } from '@/lib/db';
 export async function GET() {
     try {
         const posts = await getAllPosts();
-        return NextResponse.json(posts);
+        return NextResponse.json(posts, {
+            headers: { 'Cache-Control': 'public, max-age=60, s-maxage=120' },
+        });
     } catch (error) {
         return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
     }

@@ -11,7 +11,9 @@ export async function GET(
         if (!project) {
             return NextResponse.json({ error: 'Project not found' }, { status: 404 });
         }
-        return NextResponse.json(project);
+        return NextResponse.json(project, {
+            headers: { 'Cache-Control': 'public, max-age=60, s-maxage=120' },
+        });
     } catch (error) {
         return NextResponse.json({ error: 'Failed to fetch project' }, { status: 500 });
     }

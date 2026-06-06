@@ -4,7 +4,9 @@ import { getAllProjects, addProject, updateProject, deleteProject } from '@/lib/
 export async function GET() {
     try {
         const projects = await getAllProjects();
-        return NextResponse.json(projects);
+        return NextResponse.json(projects, {
+            headers: { 'Cache-Control': 'public, max-age=60, s-maxage=120' },
+        });
     } catch (error) {
         return NextResponse.json({ error: 'Failed to fetch projects' }, { status: 500 });
     }

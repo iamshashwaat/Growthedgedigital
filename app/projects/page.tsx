@@ -13,6 +13,7 @@ export default function ProjectsPage() {
     const [loading, setLoading] = useState(true);
     const [activeCategory, setActiveCategory] = useState<string>("All");
     const containerRef = useRef<HTMLDivElement>(null);
+    const hasAnimated = useRef(false);
 
     useEffect(() => {
         fetch("/api/projects")
@@ -35,6 +36,8 @@ export default function ProjectsPage() {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         if (loading) return;
+        if (hasAnimated.current) return;
+        hasAnimated.current = true;
         const ctx = gsap.context(() => {
             gsap.fromTo(".projects-header > *",
                 { y: 30, opacity: 0 },
@@ -49,7 +52,7 @@ export default function ProjectsPage() {
             );
         }, containerRef);
         return () => ctx.revert();
-    }, [loading, filtered]);
+    }, [loading]);
 
     const getYoutubeId = (url: string) => {
         const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
