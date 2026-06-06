@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { ArrowLeft, ExternalLink, Github, ChevronLeft, ChevronRight, X, Play, Calendar } from "lucide-react";
 import gsap from "gsap";
+import { Footer } from "@/components/footer";
 
 export default function ProjectDetailPage() {
     const { id } = useParams();
@@ -285,6 +286,7 @@ export default function ProjectDetailPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 }
